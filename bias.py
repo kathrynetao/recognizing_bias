@@ -1,21 +1,83 @@
 import nltk
-nltk.download()
-from nltk.stem import PorterStemmer
-from nltk.stem import LancasterStemmer
+import ssl
+import re
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+# nltk.download('punkt')
+from nltk.stem.snowball import SnowballStemmer
+from nltk.tokenize import sent_tokenize, word_tokenize
+from textblob import TextBlob
+
+#reading the article from txt file
+text_file = open("article.txt", "r")
+data = text_file.read()
+text_file.close()
+print(data)
+
+#creating the stemmer
+snow = SnowballStemmer(language='english')
 
 bias_bank = {
-    "Emerge": 0, "Serious": 0, "Refuse": 0, "Crucial": 0, "High-stakes": 0, "Tirade": 0, "Landmark": 0, "Latest in a string of": 0, "Major": 0, "Turn up the heat": 0, "Critical": 0, "Decrying": 0, "Offend": 0, "Stern talks": 0, "Offensive": 0, "Facing calls to": 0, "Meaningful": 0, "Even though": 0, "Monumental": 0, "Significant": 0,
-    "Finally": 0, "Surfaced": 0, "Acknowledged": 0, "Emerged": 0, "Refusing to say": 0, "Conceded": 0, "Dodged": 0, "Admission": 0, "Came to light": 0, "Admit to": 0,
-    "Mocked": 0, "Raged": 0, "Bragged": 0 , "Fumed": 0, "Lashed out": 0, "Incensed": 0, "Scoffed": 0, "Frustration": 0, "Erupted": 0, "Rant": 0, "Boasted": 0, "Gloated": 0,
-    "Good": 0, "Better": 0, "Best": 0, "Is considered to be": 0, "Seemingly": 0, "Extreme": 0, "May mean that": 0, "Could": 0, "Apparently": 0, "Bad": 0, "Worse": 0, "Worst": 0, "It's likely that": 0, "Dangerous": 0, "Suggests": 0, "Would seem": 0, "Decrying": 0, "Possibly": 0,
-    "Shocking": 0, "Remarkable": 0, "Rips": 0, "Chaotic": 0, "Lashed out": 0, "Onslaught": 0, "Scathing": 0, "Showdown": 0, "Explosive": 0, "Slams": 0, "Forcing": 0, "Warning": 0, "Embroiled in": 0, "Torrent of tweets": 0, "Desperate": 0
+    "emerg": 0, "serious": 0, "refus": 0, "crucial": 0, "high-stak": 0, "tirad": 0, "landmark": 0, "latest in a string of": 0, "major": 0, "turn up the heat": 0, "critic": 0, "decri": 0, "offens": 0, "stern talk": 0, "facing calls to": 0, "meaning": 0, "even though": 0, "monument": 0, "signific": 0,
+    "final": 0, "surfac": 0, "acknowledg": 0, "emerg": 0, "refusing to say": 0, "conced": 0, "dodg": 0, "admiss": 0, "came to light": 0, "admit to": 0,
+    "mock": 0, "rage": 0, "brag": 0 , "fume": 0, "lashed out": 0, "incens": 0, "scof": 0, "frustrat": 0, "erupt": 0, "rant": 0, "boast": 0, "gloat": 0,
+    "good": 0, "better": 0, "best": 0, "is considered to b": 0, "seem": 0, "extrem": 0, "may mean that": 0, "could": 0, "appar": 0, "bad": 0, "wors": 0, "worst": 0, "it's likely that": 0, "danger": 0, "suggest": 0, "would seem": 0, "decri": 0, "possibl": 0,
+    "shock": 0, "remark": 0, "rip": 0, "chaotic": 0, "lashed out": 0, "onslaught": 0, "scath": 0, "showdown": 0, "explos": 0, "slam": 0, "forc": 0, "warn": 0, "embroiled in": 0, "torrent of tweet": 0, "desper": 0
 }
 
-def sentiment_analysis(str):
+bias_word_lst = ["Emerge", "Serious", "Refuse", "Crucial", "High-stakes", "Tirade", "Landmark", "Latest in a string of", "Major", "Turn up the heat", "Critical", "Decrying", "Offend", "Stern talks", "Offensive", "Facing calls to", "Meaningful", "Even though", "Monumental", "Significant",
+"Finally", "Surfaced", "Acknowledged", "Emerged", "Refusing to say", "Conceded", "Dodged", "Admission", "Came to light", "Admit to", "Mocked", "Raged", "Bragged", "Fumed", "Lashed out", "Incensed", "Scoffed", "Frustration", "Erupted", "Rant", "Boasted", "Gloated",
+"Good", "Better", "Best", "Is considered to be", "Seemingly", "Extreme", "May mean that", "Could", "Apparently", "Bad", "Worse", "Worst", "It's likely that", "Dangerous", "Suggests", "Would seem", "Decrying", "Possibly",
+"Shocking", "Remarkable", "Rips", "Chaotic", "Lashed out", "Onslaught", "Scathing", "Showdown", "Explosive", "Slams", "Forcing", "Warning", "Embroiled in", "Torrent of tweets", "Desperate"]
 
-def most_frequent(str):
+
+def sentiment_analysis(str):
+    testimonial = TextBlob(str)
+    return testimonial.sentiment
+
+sentiment_analysis(data)
+#
+# # def most_frequent(str):
+#
+def __strip(str):
+    res = re.sub(r'[^\w\s]', '', str)
+    res.casefold()
+    return res
+
 
 def bias_word_count(str):
+    counter = 0
+    bias_lst = []
+    str = __strip(str)
+    token_words = word_tokenize(str)
+    stem_sentence = []
+    for word in token_words:
+        stem_sentence.append(snow.stem(word))
+
+    for word in stem_sentence:
+        if word in bias_bank:
+            bias_bank[word] += 1
+            counter += 1
+            bias_lst.append(word)
+    return [counter, bias_lst]
 
 
-def part_of_speech(str):
+bias_word_count(data)
+
+def main(str):
+    subj = sentiment_analysis(str).subjectivity
+    biased_words = bias_word_count(str)[0]
+    bias_percentage = (((biased_words/len(bias_word_lst)) + subj) / 2) * 100
+    print("This article is: ")
+    print(bias_percentage, "% biased")
+
+
+
+main(data)
+
+
+# def part_of_speech(str):

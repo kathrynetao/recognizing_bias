@@ -1,0 +1,4 @@
+nltk
+ssl
+re
+textblob
