@@ -7,7 +7,7 @@ except AttributeError:
     pass
 else:
     ssl._create_default_https_context = _create_unverified_https_context
-# nltk.download('punkt')
+nltk.download('punkt')
 from nltk.stem.snowball import SnowballStemmer
 from nltk.tokenize import sent_tokenize, word_tokenize
 from textblob import TextBlob
@@ -34,6 +34,9 @@ stemmed_bias_words = {
     "good": 0, "better": 0, "best": 0, "is considered to b": 0, "seem": 0, "extrem": 0, "may mean that": 0, "could": 0, "appar": 0, "bad": 0, "wors": 0, "worst": 0, "it's likely that": 0, "danger": 0, "suggest": 0, "would seem": 0, "decri": 0, "possibl": 0,
     "shock": 0, "remark": 0, "rip": 0, "chaotic": 0, "lashed out": 0, "onslaught": 0, "scath": 0, "showdown": 0, "explos": 0, "slam": 0, "forc": 0, "warn": 0, "embroiled in": 0, "torrent of tweet": 0, "desper": 0
 }
+
+#"thug", "terrorist", "elite", "Black-on-black crime", "urban", "inner-city", "Bossy," "sassy," "uppity", "radical"
+
 
 #gets sentiment analysis
 def sentiment_analysis(str):
@@ -72,6 +75,9 @@ def bias_word_count(str):
 def main(str):
     subj = sentiment_analysis(str).subjectivity
     biased_words = bias_word_count(str)[0]
+    x = ((biased_words/len(bias_word_lst)))
+    print("Bias words over all words:", x)
+    print("Subjectivity of article", subj)
     bias_percentage = (((biased_words/len(bias_word_lst)) + subj) / 2) * 100
     print("This article is: ")
     print(bias_percentage, "% biased")
