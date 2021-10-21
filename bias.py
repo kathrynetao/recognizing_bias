@@ -42,14 +42,11 @@ def stemmer_dict(lst):
     for word in lst:
         word = word.lower()
         x = snow.stem(word)
-        print(x)
         if x not in stemmed_bias_words:
             stemmed_bias_words[x] = 0
 
-    print(stemmed_bias_words)
     return stemmed_bias_words
-
-stemmer_dict(bias_word_lst)
+print(stemmer_dict(bias_word_lst))
 
 #gets sentiment analysis
 def sentiment_analysis(str):
@@ -78,9 +75,11 @@ def bias_word_count(str):
         if word in stemmed_bias_words:
             stemmed_bias_words[word] += 1
             counter += 1
-            bias_word_count.append(word)
-    return [counter, bias_word_count]
+            if word not in bias_word_count:
+                bias_word_count.append(word)
 
+    print(stemmed_bias_words)
+    return [counter, bias_word_count]
 
 print(bias_word_count(data))
 
