@@ -1,22 +1,43 @@
 import nltk
 import ssl
 import re
+import requests
+
 try:
     _create_unverified_https_context = ssl._create_unverified_context
 except AttributeError:
     pass
 else:
     ssl._create_default_https_context = _create_unverified_https_context
-nltk.download('punkt')
+# nltk.download('punkt')
+
 from nltk.stem.snowball import SnowballStemmer
 from nltk.tokenize import sent_tokenize, word_tokenize
 from textblob import TextBlob
+from goose3 import Goose
+from requests import get
 
-#reading the article from txt file & creating a string
+from newspaper import Article
+from newspaper import fulltext
+
+
+
+#reading the url from txt file & creating a string
 text_file = open("article.txt", "r")
-data = text_file.read()
+url = text_file.read()
 text_file.close()
-print(data)
+print(url)
+
+
+response = get(url)
+print(response)
+extractor = Goose()
+article = extractor.extract(raw_html=response.content)
+# print(article)
+text = article.cleaned_text
+print(text)
+
+
 
 #creating the stemmer
 snow = SnowballStemmer(language='english')
@@ -46,6 +67,7 @@ def stemmer_dict(lst):
             stemmed_bias_words[x] = 0
 
     return stemmed_bias_words
+
 print(stemmer_dict(bias_word_lst))
 
 #gets sentiment analysis
