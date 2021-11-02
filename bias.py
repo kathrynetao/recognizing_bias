@@ -66,10 +66,10 @@ print(sentiment_analysis(data))
 
 #strips punctuation
 def __strip(str):
-    parsed = str.split('"')
-    print(parsed)
-    length = len(parsed)
-    print(length)
+    # parsed = str.split('"')
+    # print(parsed)
+    # length = len(parsed)
+    # print(length)
     res = re.sub(r'[^\w\s]', '', str)
     res.casefold()
     return res
