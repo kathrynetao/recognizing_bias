@@ -9,7 +9,6 @@ except AttributeError:
     pass
 else:
     ssl._create_default_https_context = _create_unverified_https_context
-# nltk.download('punkt')
 
 from nltk.stem.snowball import SnowballStemmer
 from nltk.tokenize import sent_tokenize, word_tokenize
@@ -17,27 +16,22 @@ from textblob import TextBlob
 from goose3 import Goose
 from requests import get
 
-from newspaper import Article
-from newspaper import fulltext
-
+url = "https://www.buzzfeednews.com/article/scottlucas/twitter-bans-trump"
 
 
 #reading the url from txt file & creating a string
 text_file = open("article.txt", "r")
-url = text_file.read()
+link = text_file.read()
 text_file.close()
-print(url)
+# print(link)
 
 
 response = get(url)
-print(response)
 extractor = Goose()
 article = extractor.extract(raw_html=response.content)
 # print(article)
-text = article.cleaned_text
-print(text)
-
-
+data = article.cleaned_text
+print(data)
 
 #creating the stemmer
 snow = SnowballStemmer(language='english')
@@ -52,12 +46,6 @@ bias_word_lst = ["Emerge", "Serious", "Refuse", "Crucial", "High-stakes", "Tirad
 #stemmed words that indicated bias
 stemmed_bias_words = {}
 
-#     "emerg": 0, "serious": 0, "refus": 0, "crucial": 0, "high-stak": 0, "tirad": 0, "landmark": 0, "latest in a string of": 0, "major": 0, "turn up the heat": 0, "critic": 0, "decri": 0, "offens": 0, "stern talk": 0, "facing calls to": 0, "meaning": 0, "even though": 0, "monument": 0, "signific": 0,
-#     "final": 0, "surfac": 0, "acknowledg": 0, "refusing to say": 0, "conced": 0, "dodg": 0, "admiss": 0, "came to light": 0, "admit to": 0, "mock": 0, "rage": 0, "brag": 0 , "fume": 0, "lashed out": 0, "incens": 0, "scof": 0, "frustrat": 0, "erupt": 0, "rant": 0, "boast": 0, "gloat": 0,
-#     "good": 0, "better": 0, "best": 0, "is considered to b": 0, "seem": 0, "extrem": 0, "may mean that": 0, "could": 0, "appar": 0, "bad": 0, "wors": 0, "worst": 0, "it's likely that": 0, "danger": 0, "suggest": 0, "would seem": 0, "decri": 0, "possibl": 0,
-#     "shock": 0, "remark": 0, "rip": 0, "chaotic": 0, "lashed out": 0, "onslaught": 0, "scath": 0, "showdown": 0, "explos": 0, "slam": 0, "forc": 0, "warn": 0, "embroiled in": 0, "torrent of tweet": 0, "desper": 0
-# }
-
 #adds words into stemmed dict
 def stemmer_dict(lst):
     for word in lst:
@@ -68,7 +56,7 @@ def stemmer_dict(lst):
 
     return stemmed_bias_words
 
-print(stemmer_dict(bias_word_lst))
+# print(stemmer_dict(bias_word_lst))
 
 #gets sentiment analysis
 def sentiment_analysis(str):
@@ -78,6 +66,10 @@ print(sentiment_analysis(data))
 
 #strips punctuation
 def __strip(str):
+    parsed = str.split('"')
+    print(parsed)
+    length = len(parsed)
+    print(length)
     res = re.sub(r'[^\w\s]', '', str)
     res.casefold()
     return res
@@ -88,6 +80,7 @@ def bias_word_count(str):
     counter = 0
     bias_word_count = []
     str = __strip(str)
+    print(str)
     token_words = word_tokenize(str)
     stem_sentence = []
     for word in token_words:
@@ -100,7 +93,6 @@ def bias_word_count(str):
             if word not in bias_word_count:
                 bias_word_count.append(word)
 
-    print(stemmed_bias_words)
     return [counter, bias_word_count]
 
 print(bias_word_count(data))
