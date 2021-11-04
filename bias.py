@@ -2,6 +2,7 @@ import nltk
 import ssl
 import re
 import requests
+import number_extractor
 
 try:
     _create_unverified_https_context = ssl._create_unverified_context
@@ -16,13 +17,13 @@ from textblob import TextBlob
 from goose3 import Goose
 from requests import get
 
-url = "https://www.buzzfeednews.com/article/scottlucas/twitter-bans-trump"
+url = "https://www.cbc.ca/news/business/air-canada-vaccine-suspensions-1.6235222"
 
 
 #reading the url from txt file & creating a string
-text_file = open("article.txt", "r")
-link = text_file.read()
-text_file.close()
+# text_file = open("article.txt", "r")
+# link = text_file.read()
+# text_file.close()
 # print(link)
 
 
@@ -32,6 +33,7 @@ article = extractor.extract(raw_html=response.content)
 # print(article)
 data = article.cleaned_text
 print(data)
+number = number_extractor.number_extract(data)
 
 #creating the stemmer
 snow = SnowballStemmer(language='english')
@@ -96,7 +98,7 @@ def bias_word_count(str):
     return [counter, bias_word_count]
 
 print(bias_word_count(data))
-
+print(number)
 #finding a final score based off of our theory
 # def main(str):
 #     subj = sentiment_analysis(str).subjectivity
