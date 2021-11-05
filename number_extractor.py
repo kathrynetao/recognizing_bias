@@ -4,11 +4,14 @@ def number_extract(article):
     reg_list = ['\d+\.?\d*(?:\s*%| per\s*cent)','\d+[,]+\d+','(?:\$\s*|\￥\s*)*\d+\.+\d+','(?:\$\s*|\￥\s*)+\d+\.?\d+']
     found_reg_list = []
     iter_list = []
+    #to save index [start:end] of a number
     index_list = []
     for reg in reg_list:
         answer = re.findall(reg,article)
         iter_list.append(re.finditer(reg, article))
         found_reg_list.append(answer)
+
+    #we only want the number appear once
     start_set = set([])
     for i in range(len(iter_list)):
         for match in iter_list[i]:
@@ -19,9 +22,8 @@ def number_extract(article):
                 start_set.add(s)
                 e = match.end()
                 index_list.append((s,e))
-                print('String match "%s" at %d:%d' % (article[s:e], s, e))
+                # print('String match "%s" at %d:%d' % (article[s:e], s, e))
     index_list.sort()
-    print(index_list)
     return found_reg_list,index_list
 
 
