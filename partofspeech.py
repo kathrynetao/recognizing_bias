@@ -1,12 +1,11 @@
 #part of speech
 import nltk
-#nltk.download()
+nltk.download()
 
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 stop_words = set(stopwords.words('english'))
-  
 
 txt1 = "It was just like old times.  On Wednesday alone, Donald Trump issued pronouncements on a potential war with China, what Congress should do about the debt ceiling, false claims of a stolen election and his Fox News ally “the great Sean Hannity”.Mark Meadows, former White House chief of staff, stands behind Donald Trump on 29 July 2020.‘Can you believe this?’: key takeaways from the report on Trump’s attempt to steal the electionRead moreBut how many people noticed?Cast into the social media wilderness, the former US president releases statements by email these days, clogging the inboxes of reporters whose attention has turned elsewhere. The era when a single tweet from Trump could electrify cable news, rattle financial markets and unnerve foreign capitals is long gone." 
 txt2 = "bad good, worst,  yucky banned blue, bluer, bluest"   

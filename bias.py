@@ -25,16 +25,16 @@ url = "https://www.cbc.ca/news/business/air-canada-vaccine-suspensions-1.6235222
 # link = text_file.read()
 # text_file.close()
 # print(link)
+def get_article(url):
+    response = get(url)
+    extractor = Goose()
+    article = extractor.extract(raw_html=response.content)
+    # print(article)
+    data = article.cleaned_text
+    number = number_extractor.number_extract(data)
+    return data,number
 
-
-response = get(url)
-extractor = Goose()
-article = extractor.extract(raw_html=response.content)
-# print(article)
-data = article.cleaned_text
-print(data)
-number = number_extractor.number_extract(data)
-
+data,number = get_article(url)
 #creating the stemmer
 snow = SnowballStemmer(language='english')
 
@@ -82,7 +82,6 @@ def bias_word_count(str):
     counter = 0
     bias_word_count = []
     str = __strip(str)
-    print(str)
     token_words = word_tokenize(str)
     stem_sentence = []
     for word in token_words:
