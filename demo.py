@@ -16,13 +16,10 @@ def demo():
     for i in index_list:
       data = data[0: i[0] + count * 31] + '<span class = "numbers">' + data[i[0] + count * 31:i[1]+ count * 31] + '</span>' + data[i[1]+ count * 31:]
       count += 1
+
     resText = Markup(data)
     print(resText)
     return render_template('index.html', input_text = inputText, res_text = resText)
-
-def formatRes(textList):
-  return '<p>' + '</p><p>'+ textList + '</p>'
-
 
 if __name__ == '__main__':
     app.run()
