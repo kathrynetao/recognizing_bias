@@ -1,0 +1,717 @@
+.content {
+  padding: 13px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:1
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+.experience{    
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(-45deg, gray, #b3a9ad, black, white);
+  margin-top: 500px;
+  color: #222;
+  height: 750px;
+  
+}
+
+.space {
+  height: 500px;
+
+}
+h1{
+  padding-top: 100px;
+  padding-bottom: 10px;
+  font-size: 30px;
+  text-align: center;
+  font-family: Helvetica;
+  font-style: italic;
+}
+
+h1:hover{
+  color: rgb(161, 14, 14);}
+
+h2{
+  text-align: center;
+  font-family: helvetica;
+  color:maroon;
+  font-size: larger;
+  padding-bottom: 100px;
+}
+
+h3{
+  text-align: center;
+  margin-top: 1em;
+
+}
+
+a.button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+  background-color: lightblue; /* Green */
+  color: rgb(100, 102, 219);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  width: 200px;
+}
+
+
+.subbutton:hover {
+  color:lightblue;
+  background-color: blue;
+  border: 50%;
+  font-size: 30px;
+
+}
+header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-size: 200% 200%;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  height: 70px;
+  animation: gradient 5s ease infinite;
+}
+
+header li{
+  margin-top: 10px;
+}
+
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+li {
+  float: left;
+  text-align: left;
+  font-size: large;
+  font-style: italic;
+}
+
+.rightnav{
+  margin-left: 100px;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  height: 100px;
+  
+}
+
+li a:hover {
+  background-color:white;
+  color:  #333;
+}
+
+.name{
+  font-weight: bolder;
+  font-size: larger;
+  font-style: normal;
+  padding-right: 800px;
+}
+
+.name:hover{
+background: none;
+color :white;
+}
+
+/*ABOUT ME*/
+
+.aboutme {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+      "a b";
+  height: 100%;
+  grid-row-gap: 20px;
+  grid-column-gap: 50px;
+  padding: 20px;
+  min-height: 600px;
+  min-width: 400px;
+  margin-top: 50px;
+}
+
+.info{
+   grid-area: b;
+   width: 200x;
+}
+
+.profilepic{
+   grid-area: a;
+   align-content: center;
+   margin-left: 150px;
+   position: relative;
+   border-radius: 15%;
+   
+}
+
+#profilepicp{
+  width: 400px;
+  height: 400px;
+  display: block;
+}
+#welcoming{
+   text-align: left;
+   margin-left: -30px;
+}
+#aboutme{
+   text-align: left;
+   margin-left: -30px;
+
+}
+#aboutmeinfo{
+  text-align: left;
+  margin-left: -30px;
+font-size: 17px;
+  margin-right: 100px;
+}
+
+#aboutmeinfo:hover{
+  text-align: left;
+  margin-left: -30px;
+  margin-right: 100px;
+
+  color: #e73c7e;
+  font-size: 20px;
+}
+
+.experience-box{
+  width: 600px;
+  align-content: center;
+  height:400px;
+  background-color: white;
+  align-items: center;
+  margin:auto;
+}
+
+.exp-title{
+  margin: auto;
+  color: white;
+  font-size: 70px;
+  border-bottom: solid 2px white;
+}
+
+
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;}
+
+/* Style the tab */
+.tab {
+float: left;
+width: 30%;
+height: 250px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+display: block;
+height:100px;
+color: black;
+padding: 22px 16px;
+width: 100%;
+text-align: left;
+cursor: pointer;
+transition: 0.3s;
+font-size: 17px;
+background: none;
+border-left: solid 5px darkgrey;
+}
+
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+background-color: hotpink;
+color: white;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+border-left: solid 5px hotpink;
+}
+
+/* Style the tab content */
+.tabcontent {
+float: left;
+padding: 5px 12px;
+padding-top: 0em;
+width: 70%;
+height: 300px;
+text-align: left;
+}
+
+.job-name{
+  text-align: left;
+  font-size: 25px;
+  margin-top: 1em;
+
+}
+
+.job-descrip{
+  list-style-type:circle;
+  text-align: left;
+}
+
+span#company{
+  color: hotpink;
+}
+
+
+body{
+  align-items: center;
+  /*background: linear-gradient(-45deg, #ee7752, red, #23a6d5, #23d5ab);*/
+  background: linear-gradient(-45deg, black, gray, #b3a9ad, white);
+  
+
+}
+
+.projects-section{
+  background: white;
+  height: auto;
+}
+
+.projects {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  margin:100px;
+  
+}
+
+#proj-title{
+   font-size: 60px;
+   padding-top: 1em;;
+   color:  #23a6d5;
+   border-bottom: solid 2px  #23a6d5;
+   
+}
+.projects > section {
+  display: flex;
+  justify-content: center;
+  flex: 0 50%;
+  width: 400px;
+
+}
+
+.projects > section div {
+
+ margin:20px;
+ width: 400px;
+ background-color: hotpink;
+ text-align: left;
+ color: white;
+}
+
+.projects > section img{
+ width: 400px;
+}
+
+
+.description{
+  margin: 1em;;
+  font-size: 20px;
+}
+
+
+
+body {
+  height:100%;
+  margin:0;
+  padding:0;
+}
+body * {
+  box-sizing: border-box;
+  /* border: solid 1px #000; */
+}
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 20vh;
+  grid-template-areas:
+    "top"
+    "bottom";
+  height: 100vh;
+  width: 100vw;
+}
+#featured {
+  grid-area: top;
+}
+.cards {
+  grid-area: bottom;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding-left: 10px;
+  padding-top: 10px;
+  list-style: none;
+}
+.card {
+  width: 12.5%;
+  height: 100%;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+.image {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.image.active {
+  border: solid 5px black;
+}
+
+.image:hover {
+  opacity: 0.7;
+}
+
+
+/* CSS */
+.button-56 {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
+}
+
+/*
+BUTTON FROM THIS SITE https://codepen.io/ahart814/pen/yLNMZGa */
+:root {
+  --backgroundColor: rgba(246, 241, 209);
+  --colorShadeA: rgb(106, 163, 137);
+  --colorShadeB: rgb(121, 186, 156);
+  --colorShadeC: rgb(150, 232, 195);
+  --colorShadeD: rgb(187, 232, 211);
+  --colorShadeE: rgb(205, 255, 232);
+}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+* {
+  box-sizing: border-box;
+}
+*::before, *::after {
+  box-sizing: border-box;
+}
+
+
+/* CSS */
+.button-1 {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+
+.button-1:hover,
+.button-1:focus {
+  background-color: #F082AC;
+}
+
+.subbutton {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  font-family: inherit;
+}
+
+
+button.big-button {
+  padding: 1em 2em;
+  border: 2px solid var(--colorShadeA);
+  border-radius: 1em;
+  background: var(--colorShadeE);
+  transform-style: preserve-3d;
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
+   margin: auto;
+}
+button.big-button::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--colorShadeC);
+  border-radius: inherit;
+  box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.75em 0 0 var(--colorShadeA);
+  transform: translate3d(0, 0.75em, -1em);
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
+}
+
+
+button.big-button:hover {
+  background: var(--colorShadeD);
+  transform: translate(0, 0.375em);
+}
+
+button.big-button:hover::before {
+  transform: translate3d(0, 0.75em, -1em);
+}
+
+button.big-button:active {
+            transform: translate(0em, 0.75em);
+}
+
+button.big-button:active::before {
+  transform: translate3d(0, 0, -1em);
+
+      box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
+
+}
+
+#navbar{
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+ 
+}
+
+.sidenav {
+  width: 70px;
+  position: fixed;
+  z-index: 1;
+  top: 500px;
+  left: 10px;
+  overflow-x: hidden;
+  padding: 8px 0;
+  align-items: center;
+}
+
+.sidenav ul {
+
+  padding: 36px 8px 10px 6px;
+  text-decoration: none;
+  color: #2196F3;
+  display: block;
+}
+
+.sidenav a{
+  
+  text-align: center;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.sidenav a:hover {
+  color: #064579;
+}
+
+.vl {
+  border-left: 3px solid black;
+  height: 500px;
+  padding-left: 2em;
+  text-align: center;
+  margin-left: 13px;
+}
+
+.main {
+  margin-left: 140px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+.contact{
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    height: 600px;
+    align-content: center;
+    align-items: center;
+}
+
+.email1{
+  text-align: center;
+  margin-top: 20px;
+}
+
+.emailtitle{
+color: white;
+padding: 80px;
+}
+
+
+.emailtitle:hover{
+color: black;
+}
+
+#credits{
+  font-family: "OCR A Std", monospace;
+  text-align: center;
+  font-size:15px;
+  color: white;
+  margin-bottom: 1em;
+  margin-top: 50px;
+  
+}
+/* Create two equal columns that floats next to each other */
+.column {
+float: left;
+width: 50%;
+padding: 10px;
+
+text-align: left;
+font-size: 30px;
+padding-left: 100px;
+padding-left: 100px;
+width: 500px;
+
+}
+
+.desc{
+font-size: 14px;
+
+}
+.job:hover{
+color: rgb(109, 109, 194);
+font-size: 35px;
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+.column {
+  width: 100%;
+}
+}
+
+/* Media Queries */
+@media (max-width: 800px) {
+  main {
+      grid-template-rows: 1fr;
+      grid-template-areas:
+        "top";
+  }
+  main .cards { display: none; }
+}
