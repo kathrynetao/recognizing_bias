@@ -17,24 +17,27 @@ from textblob import TextBlob
 from goose3 import Goose
 from requests import get
 
-url = "https://www.cbc.ca/news/business/air-canada-vaccine-suspensions-1.6235222"
+url = "https://www.vox.com/2016/7/25/12270880/donald-trump-racist-racism-history"
 
+def get_html(url):
+    response = get(url)
+    extractor = Goose()
+    return response.content
+get_html(url)
 
-#reading the url from txt file & creating a string
-# text_file = open("article.txt", "r")
-# link = text_file.read()
-# text_file.close()
-# print(link)
 def get_article(url):
     response = get(url)
     extractor = Goose()
+    # print(response.content)
     article = extractor.extract(raw_html=response.content)
-    # print(article)
     data = article.cleaned_text
+    print(data)
     number = number_extractor.number_extract(data)
-    return data,number
+    return data
 
-data,number = get_article(url)
+
+data = get_article(url)
+
 #creating the stemmer
 snow = SnowballStemmer(language='english')
 
@@ -58,7 +61,12 @@ def stemmer_dict(lst):
 
     return stemmed_bias_words
 
-# print(stemmer_dict(bias_word_lst))
+#gets quotes
+def find_quotes(str):
+    str = str.replace('“','"').replace('”','"')
+    print(re.findall('"([^"]*)"', str))
+
+find_quotes(data)
 
 #gets sentiment analysis
 def sentiment_analysis(str):
@@ -68,10 +76,6 @@ print(sentiment_analysis(data))
 
 #strips punctuation
 def __strip(str):
-    # parsed = str.split('"')
-    # print(parsed)
-    # length = len(parsed)
-    # print(length)
     res = re.sub(r'[^\w\s]', '', str)
     res.casefold()
     return res
@@ -84,30 +88,15 @@ def bias_word_count(str):
     str = __strip(str)
     token_words = word_tokenize(str)
     stem_sentence = []
+    biased_words = []
     for word in token_words:
-        stem_sentence.append(snow.stem(word))
-
+        stem_sentence.append([snow.stem(word), word])
     for word in stem_sentence:
-        if word in stemmed_bias_words:
-            stemmed_bias_words[word] += 1
+        if word[0] in stemmed_bias_words:
+            stemmed_bias_words[word[0]] += 1
             counter += 1
-            if word not in bias_word_count:
-                bias_word_count.append(word)
-
+            if word[1] not in bias_word_count:
+                bias_word_count.append(word[1])
     return [counter, bias_word_count]
 
 print(bias_word_count(data))
-print(number)
-#finding a final score based off of our theory
-# def main(str):
-#     subj = sentiment_analysis(str).subjectivity
-#     biased_words = bias_word_count(str)[0]
-#     x = ((biased_words/len(data)))
-#     print(biased_words)
-#     print(sentiment_analysis(str))
-
-
-# main(data)
-
-
-# def part_of_speech(str):
