@@ -39,17 +39,21 @@ h1{
   text-align: center;
   font-family: Helvetica;
   font-style: italic;
+  background-color: maroon;
+  color: white;
 }
 
-h1:hover{
-  color: rgb(161, 14, 14);}
+/* h1:hover{
+  color: rgb(161, 14, 14);
+  background-color: white;} */
 
 h2{
   text-align: center;
   font-family: helvetica;
-  color:maroon;
+  background-color: white;
+  color:black;
   font-size: larger;
-  padding-bottom: 100px;
+  margin-bottom: 100px;
 }
 
 h3{
@@ -75,8 +79,8 @@ a.button {
 
 
 .subbutton:hover {
-  color:lightblue;
-  background-color: blue;
+  color:black;
+  background-color: gray;
   border: 50%;
   font-size: 30px;
 
@@ -342,12 +346,16 @@ body{
   font-size: 20px;
 }
 
-
+img {
+  opacity: 0.5;
+}
 
 body {
   height:100%;
   margin:0;
   padding:0;
+  background-image: url(news.jpg); 
+ 
 }
 body * {
   box-sizing: border-box;
@@ -511,7 +519,7 @@ BUTTON FROM THIS SITE https://codepen.io/ahart814/pen/yLNMZGa */
 }
 
 .subbutton {
-  background-color: #EA4C89;
+  background-color: maroon;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
@@ -525,6 +533,7 @@ BUTTON FROM THIS SITE https://codepen.io/ahart814/pen/yLNMZGa */
   line-height: 20px;
   list-style: none;
   margin: 0;
+  margin-top: -30;
   outline: none;
   position: relative;
   display: inline-block;
