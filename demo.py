@@ -19,14 +19,20 @@ def index():
 @app.route('/news/<restext>')
 def news(restext):
     restext = urllib.parse.unquote(restext)
-    data, number = bias.get_article(restext)
+    html = bias.get_html(restext)
+    base_url = 'https://' + bias.base_url(restext)
+    html = html.decode("utf-8")
+    if 'href="/' in html:
+        html = html.replace('href="/', 'href="' + base_url + '/')
+
+    data= bias.get_article(restext)
     found_reg_list, index_list = ne.number_extract(data)
     count = 0
     for i in index_list:
       data = data[0: i[0] + count * 31] + '<span class = "numbers">' + data[i[0] + count * 31:i[1]+ count * 31] + '</span>' + data[i[1]+ count * 31:]
       count += 1
 
-    resText = Markup(data)
+    resText = Markup(html)
     return render_template('news.html',res_text = resText)
 
 if __name__ == '__main__':
