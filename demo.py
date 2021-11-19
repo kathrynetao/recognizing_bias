@@ -13,7 +13,14 @@ def demo():
     inputText = request.form.get("input_text")
     html = bias.get_html(inputText)
     article = bias.get_article(inputText)
-    print(html)
+
+    base_url = 'https://' + bias.base_url(inputText)
+    print(base_url)
+    html = html.decode("utf-8")
+    if 'href="/' in html:
+        html = html.replace('href="/', 'href="' + base_url + '/')
+    # print(html)
+
     # word_list = bias.bias_word_count(article)[1]
     # for word in word_list:
     #     if word in html:
@@ -26,10 +33,9 @@ def demo():
     # for i in index_list:
     #   data = data[0: i[0] + count * 31] + '<span class = "numbers">' + data[i[0] + count * 31:i[1]+ count * 31] + '</span>' + data[i[1]+ count * 31:]
     #   count += 1
-
-    # resText = Markup(html)
-    # print(resText)
-    return render_template('index.html', input_text = inputText, res_text = html)
+    resText = Markup(html)
+    print(resText)
+    return render_template('index.html', input_text = inputText, res_text = resText)
 
 if __name__ == '__main__':
     app.run()
