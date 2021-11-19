@@ -2,6 +2,7 @@ import nltk
 import ssl
 import re
 import requests
+import number_extractor
 
 try:
     _create_unverified_https_context = ssl._create_unverified_context
@@ -16,23 +17,24 @@ from textblob import TextBlob
 from goose3 import Goose
 from requests import get
 
-url = "https://www.buzzfeednews.com/article/scottlucas/twitter-bans-trump"
+url = "https://www.cbc.ca/news/business/air-canada-vaccine-suspensions-1.6235222"
 
+def get_html(url):
+    response = get(url)
+    extractor = Goose()
+    return response.content
+get_html(url)
 
-#reading the url from txt file & creating a string
-text_file = open("article.txt", "r")
-link = text_file.read()
-text_file.close()
-# print(link)
+def get_article(url):
+    response = get(url)
+    extractor = Goose()
+    article = extractor.extract(raw_html=response.content)
+    data = article.cleaned_text
+    # print(data)
+    number = number_extractor.number_extract(data)
+    return data
 
-
-response = get(url)
-extractor = Goose()
-article = extractor.extract(raw_html=response.content)
-# print(article)
-data = article.cleaned_text
-print(data)
-
+data = get_article(url)
 #creating the stemmer
 snow = SnowballStemmer(language='english')
 
@@ -58,6 +60,13 @@ def stemmer_dict(lst):
 
 # print(stemmer_dict(bias_word_lst))
 
+#gets quotes
+def find_quotes(str):
+    str = str.replace('“','"').replace('”','"')
+    print(re.findall('"([^"]*)"', str))
+
+find_quotes(data)
+
 #gets sentiment analysis
 def sentiment_analysis(str):
     testimonial = TextBlob(str)
@@ -66,10 +75,6 @@ print(sentiment_analysis(data))
 
 #strips punctuation
 def __strip(str):
-    # parsed = str.split('"')
-    # print(parsed)
-    # length = len(parsed)
-    # print(length)
     res = re.sub(r'[^\w\s]', '', str)
     res.casefold()
     return res
@@ -80,7 +85,6 @@ def bias_word_count(str):
     counter = 0
     bias_word_count = []
     str = __strip(str)
-    print(str)
     token_words = word_tokenize(str)
     stem_sentence = []
     for word in token_words:
@@ -97,16 +101,8 @@ def bias_word_count(str):
 
 print(bias_word_count(data))
 
-#finding a final score based off of our theory
-# def main(str):
-#     subj = sentiment_analysis(str).subjectivity
-#     biased_words = bias_word_count(str)[0]
-#     x = ((biased_words/len(data)))
-#     print(biased_words)
-#     print(sentiment_analysis(str))
+def base_url(url):
+    base_url = url.split('/')[2]
+    return base_url
 
-
-# main(data)
-
-
-# def part_of_speech(str):
+print(base_url(url))
