@@ -17,7 +17,7 @@ html{
   scroll-behavior: smooth;
 }
 
-.experience{
+.experience{    
   display: flex;
   justify-content: center;
   text-align: center;
@@ -25,7 +25,7 @@ html{
   margin-top: 500px;
   color: #222;
   height: 750px;
-
+  
 }
 
 .space {
@@ -39,17 +39,21 @@ h1{
   text-align: center;
   font-family: Helvetica;
   font-style: italic;
+  background-color: maroon;
+  color: white;
 }
 
-h1:hover{
-  color: rgb(161, 14, 14);}
+/* h1:hover{
+  color: rgb(161, 14, 14);
+  background-color: white;} */
 
 h2{
   text-align: center;
   font-family: helvetica;
-  color:maroon;
+  background-color: white;
+  color:black;
   font-size: larger;
-  padding-bottom: 100px;
+  margin-bottom: 100px;
 }
 
 h3{
@@ -75,8 +79,8 @@ a.button {
 
 
 .subbutton:hover {
-  color:lightblue;
-  background-color: blue;
+  color:black;
+  background-color: gray;
   border: 50%;
   font-size: 30px;
 
@@ -125,7 +129,7 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
   height: 100px;
-
+  
 }
 
 li a:hover {
@@ -172,7 +176,7 @@ color :white;
    margin-left: 150px;
    position: relative;
    border-radius: 15%;
-
+   
 }
 
 #profilepicp{
@@ -290,7 +294,7 @@ body{
   align-items: center;
   /*background: linear-gradient(-45deg, #ee7752, red, #23a6d5, #23d5ab);*/
   background: linear-gradient(-45deg, black, gray, #b3a9ad, white);
-
+  
 
 }
 
@@ -305,7 +309,7 @@ body{
   text-align: center;
   flex-wrap: wrap;
   margin:100px;
-
+  
 }
 
 #proj-title{
@@ -313,7 +317,7 @@ body{
    padding-top: 1em;;
    color:  #23a6d5;
    border-bottom: solid 2px  #23a6d5;
-
+   
 }
 .projects > section {
   display: flex;
@@ -332,9 +336,9 @@ body{
  color: white;
 }
 
-/* .projects > section img{
+.projects > section img{
  width: 400px;
-} */
+}
 
 
 .description{
@@ -342,12 +346,16 @@ body{
   font-size: 20px;
 }
 
-
+img {
+  opacity: 0.5;
+}
 
 body {
   height:100%;
   margin:0;
   padding:0;
+  background-image: url(news.jpg); 
+ 
 }
 body * {
   box-sizing: border-box;
@@ -381,7 +389,7 @@ main {
   padding-bottom: 10px;
   padding-right: 10px;
 }
-/* .image {
+.image {
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -394,7 +402,7 @@ main {
 
 .image:hover {
   opacity: 0.7;
-} */
+}
 
 
 /* CSS */
@@ -511,7 +519,7 @@ BUTTON FROM THIS SITE https://codepen.io/ahart814/pen/yLNMZGa */
 }
 
 .subbutton {
-  background-color: #EA4C89;
+  background-color: maroon;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
@@ -525,6 +533,7 @@ BUTTON FROM THIS SITE https://codepen.io/ahart814/pen/yLNMZGa */
   line-height: 20px;
   list-style: none;
   margin: 0;
+  margin-top: -30;
   outline: none;
   position: relative;
   display: inline-block;
@@ -590,7 +599,7 @@ button.big-button:active::before {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
-
+ 
 }
 
 .sidenav {
@@ -613,7 +622,7 @@ button.big-button:active::before {
 }
 
 .sidenav a{
-
+  
   text-align: center;
   padding: 8px 16px;
   text-decoration: none;
@@ -666,7 +675,7 @@ color: black;
   color: white;
   margin-bottom: 1em;
   margin-top: 50px;
-
+  
 }
 /* Create two equal columns that floats next to each other */
 .column {
