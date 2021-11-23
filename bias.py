@@ -17,7 +17,7 @@ from textblob import TextBlob
 from goose3 import Goose
 from requests import get
 
-url = "https://www.cbc.ca/news/business/air-canada-vaccine-suspensions-1.6235222"
+url = "https://www.vox.com/2016/7/25/12270880/donald-trump-racist-racism-history"
 
 def get_html(url):
     response = get(url)
@@ -88,16 +88,14 @@ def bias_word_count(str):
     token_words = word_tokenize(str)
     stem_sentence = []
     for word in token_words:
-        stem_sentence.append(snow.stem(word))
-        
+        stem_sentence.append([snow.stem(word), word])
 
     for word in stem_sentence:
-        if word in stemmed_bias_words:
-            stemmed_bias_words[word] += 1
+        if word[0] in stemmed_bias_words:
+            stemmed_bias_words[word[0]] += 1
             counter += 1
-            if word not in bias_word_count:
-                bias_word_count.append(word)
-
+            if word[1] not in bias_word_count:
+                bias_word_count.append(word[1])
     return [counter, bias_word_count]
 
 print(bias_word_count(data))

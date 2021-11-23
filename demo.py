@@ -25,7 +25,6 @@ def demo():
     for word in word_list:
         if word in html:
             html = html.replace(word, '<span class = "bias_words">' + word + '</span>')
-
     resText = Markup(html)
     return render_template('index.html', input_text = inputText, res_text = resText)
 
