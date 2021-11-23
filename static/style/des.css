@@ -1,5 +1,4 @@
 
-
 .webh1{
   padding-top: 100px;
   padding-bottom: 10px;
@@ -31,27 +30,28 @@
 }
 
 
-
-
 body{
   align-items: center;
   /*background: linear-gradient(-45deg, #ee7752, red, #23a6d5, #23d5ab);*/
   background: linear-gradient(-45deg, black, gray, #b3a9ad, white);
-  
+  height: 95vh;
+
+
 }
 
 
 
 body {
-  height:100%;
+
   margin:0;
   padding:0;
-  background-image: url(news.jpg); 
+  background-image: url(news.jpg);
+  height: 95vh;
 
 }
 
 
-/* CSS 
+/* CSS
 .button-56 {
   align-items: center;
   background-color: #fee6e3;
@@ -110,7 +110,7 @@ body {
   }
 }
 
-BUTTON FROM THIS SITE https://codepen.io/ahart814/pen/yLNMZGa 
+BUTTON FROM THIS SITE https://codepen.io/ahart814/pen/yLNMZGa
 :root {
   --backgroundColor: rgba(246, 241, 209);
   --colorShadeA: rgb(106, 163, 137);
@@ -193,7 +193,7 @@ BUTTON FROM THIS SITE https://codepen.io/ahart814/pen/yLNMZGa
   font-family: inherit;
 }
 
-/* 
+/*
 button.big-button {
   padding: 1em 2em;
   border: 2px solid var(--colorShadeA);
@@ -244,7 +244,7 @@ button.big-button:active::before {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
- 
+
 }
  */
 
@@ -253,4 +253,3 @@ button.big-button:active::before {
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0px 10px;
 }
-
