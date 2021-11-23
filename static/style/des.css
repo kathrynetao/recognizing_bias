@@ -355,8 +355,12 @@ body {
   margin:0;
   padding:0;
   background-image: url(news.jpg); 
+
+  
  
 }
+
+
 body * {
   box-sizing: border-box;
   /* border: solid 1px #000; */
