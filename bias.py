@@ -89,6 +89,7 @@ def bias_word_count(str):
     stem_sentence = []
     for word in token_words:
         stem_sentence.append(snow.stem(word))
+        
 
     for word in stem_sentence:
         if word in stemmed_bias_words:
