@@ -34,8 +34,6 @@ body{
   align-items: center;
   /*background: linear-gradient(-45deg, #ee7752, red, #23a6d5, #23d5ab);*/
   background: linear-gradient(-45deg, black, gray, #b3a9ad, white);
-  height: 95vh;
-
 
 }
 
@@ -46,7 +44,6 @@ body {
   margin:0;
   padding:0;
   background-image: url(news.jpg);
-  height: 95vh;
 
 }
 
