@@ -79,13 +79,17 @@ def __strip(str):
     res.casefold()
     return res
 
+def token_nize(str):
+    token_words = word_tokenize(str)
+    return token_words
+
 #counting bias terms in the article
 def bias_word_count(str):
     stemmed_bias_words = stemmer_dict(bias_word_lst)
     counter = 0
     bias_word_count = []
     str = __strip(str)
-    token_words = word_tokenize(str)
+    token_words = token_nize(str)
     stem_sentence = []
     for word in token_words:
         stem_sentence.append(snow.stem(word))
