@@ -39,13 +39,13 @@ body{
 
 
 
-body {
+/* body {
 
   margin:0;
   padding:0;
-  background-image: url(news.jpg);
+  background-image: url(news.jpg); 
 
-}
+} */
 
 
 /* CSS
@@ -160,7 +160,45 @@ BUTTON FROM THIS SITE https://codepen.io/ahart814/pen/yLNMZGa
   background-color: #F082AC;
 }
  */
+
 .subbutton {
+  align-items: center;
+  flex: content;
+  background-color: maroon;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin-left: 32px;
+  margin-top: 30;
+  outline: none;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  font-family: inherit;
+}
+
+.subbutton:hover {
+  background-color: gray;
+  color: maroon;
+}
+
+.subbutton1 {
   background-color: maroon;
   border-radius: 8px;
   border-style: none;
