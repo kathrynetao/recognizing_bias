@@ -24,5 +24,7 @@ def demo():
     resText = Markup(html)
     return render_template('index.html', input_text = inputText, res_text = resText)
 
+
+
 if __name__ == '__main__':
     app.run()
