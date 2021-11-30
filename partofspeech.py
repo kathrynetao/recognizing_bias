@@ -17,7 +17,6 @@ def adjective_detector(txt):
     sups = []
     tokenized = sent_tokenize(txt)
     for i in tokenized:
-
         # Word tokenizers is used to find the words
         # and punctuation in a string
         wordsList = nltk.word_tokenize(i)
@@ -28,7 +27,6 @@ def adjective_detector(txt):
         #  Using a Tagger. Which is part-of-speech
         # tagger or POS-tagger.
         tagged = nltk.pos_tag(wordsList)
-
 
         for i in tagged:
             if i[1] == 'JJ':
@@ -41,6 +39,3 @@ def adjective_detector(txt):
     final["comps"] = comps
     final["sups"] = sups
     return final
-
-print(adjective_detector(txt1))
-print(adjective_detector(txt2))
