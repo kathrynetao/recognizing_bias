@@ -39,13 +39,20 @@ body{
 
 
 
-/* body {
+body {
 
   margin:0;
   padding:0;
-  background-image: url(news.jpg); 
+  background-image: url(news.jpg);
 
-} */
+}
+
+ td{
+  background-color: white;
+  padding-left: 30px;
+
+
+}
 
 
 /* CSS
@@ -189,7 +196,6 @@ BUTTON FROM THIS SITE https://codepen.io/ahart814/pen/yLNMZGa
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 700;
-
   font-family: inherit;
 }
 

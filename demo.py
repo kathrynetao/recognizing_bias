@@ -17,14 +17,15 @@ def demo():
     html = html.decode("utf-8")
     if 'href="/' in html:
         html = html.replace('href="/', 'href="' + base_url + '/')
+
     html = ne.highlight_number(html, article)
     html = bias.highlight_word_bank(html, article)
     html = bias.highlight_quotes(html,article)
     html = bias.highlight_adjectives(html, article)
+
+
     resText = Markup(html)
     return render_template('index.html', input_text = inputText, res_text = resText)
-
-
 
 if __name__ == '__main__':
     app.run()
