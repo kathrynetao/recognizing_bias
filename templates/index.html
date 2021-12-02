@@ -7,18 +7,19 @@
     .result{font-size:20px;margin:0 auto;}
     .numbers{color:lightblue}
     .bias_words{color:red}
-    .quotes{color: green}
+    .quotes{color: #86DC3D;}
     .adj{color: blue}
     .comps{color:orange}
     .sups{color: purple}
+    .result{background-color: white}
 </style>
 <link rel="stylesheet" href="../static/style/des.css">
-<body>
 
-<form method="post" action="/">
+<body>
     <p class = "webh1">HELLO! Welcome to Recognizing Bias in the Media!</p>
     <p class = "webh2">Bias detection in Media is not always so black and white.</p>
-    <table>
+    <table class="search">
+      <form method="post" action="/">
         <td>
             <p> Insert Link Here: </p>
         </td>
@@ -26,26 +27,136 @@
             <textarea type="text" class="query" name="input_text" id="input_text" value="" style="width:1000px;height:40px; align-items: center; align-self: auto;" onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }">{{input_text}}</textarea>
         <input class = "subbutton1" type="submit" for="input_text" value="submit">
         </td>
+      </form>
+    </table>
+    <table class="article">
+        <button class = "subbutton" onclick="number()"> Analyze Numbers </button>
+        <button class = "subbutton" onclick="words()"> Analyze Bias Words </button>
+        <button class = "subbutton" onclick="adj()"> Analyze Adjectives </button>
+        <button class = "subbutton" onclick="quotes()"> Analyze Quotes  </button>
+        <tr>
+          <td>
+              <div type="input" class="result" name="res_text" id="res_text" value="" style="width:1000px;height:1000px;overflow-y:auto;border-style:solid; border-width:1px; display: block; border-color:#000" >{{res_text}} Results Loading...</div>
+              <div type="input" class="result" name="res_text_num" id="res_text_num" value="" style="width:1000px;height:1000px;overflow-y:auto;border-style:solid; border-width:1px; display: none; border-color:#000" >{{res_text_num}} Results Loading...</div>
+              <div type="input" class="result" name="res_text_words" id="res_text_words" value="" style="width:1000px;height:1000px;overflow-y:auto;border-style:solid; border-width:1px; display: none; border-color:#000" >{{res_text_words}} Results Loading...</div>
+              <div type="input" class="result" name="res_text_adj" id="res_text_adj" value="" style="width:1000px;height:1000px;overflow-y:auto;border-style:solid; border-width:1px; display: none; border-color:#000" >{{res_text_adj}} Results Loading...</div>
+              <div type="input" class="result" name="res_text_quotes" id="res_text_quotes" value="" style="width:1000px;height:1000px;overflow-y:auto;border-style:solid; border-width:1px; display: none; border-color:#000" >{{res_text_quotes}} Results Loading...</div>
+          </td>
+          <td class="questions">
+              <div type="input" name="res_text2" id="questions_main" value="" style="width:350px;height:1000px;overflow-y:auto;border-style:solid; border-width:1px; border-color:#000; margin-left:25px; background-color:white; display: block;" >Discussion Questions {{questions_main}}</div>
+              <div type="input" name="res_text2" id="questions_num" value="" style="width:350px;height:1000px;overflow-y:auto;border-style:solid; border-width:1px; border-color:#000; margin-left:25px; background-color:white; display: none;" >Discussion Questions {{questions_num}}</div>
+              <div type="input" name="res_text2" id="questions_word" value="" style="width:350px;height:1000px;overflow-y:auto;border-style:solid; border-width:1px; border-color:#000; margin-left:25px; background-color:white; display: none;" >Discussion Questions {{questions_word}}</div>
+              <div type="input" name="res_text2" id="questions_adj" value="" style="width:350px;height:1000px;overflow-y:auto;border-style:solid; border-width:1px; border-color:#000; margin-left:25px; background-color:white; display: none;" >Discussion Questions {{questions_adj}}</div>
+              <div type="input" name="res_text2" id="questions_quotes" value="" style="width:350px;height:1000px;overflow-y:auto;border-style:solid; border-width:1px; border-color:#000; margin-left:25px; background-color:white; display: none;" >Discussion Questions {{questions_quotes}}</div>
+          </td>
 
+        </tr>
     </table>
 
-    <table>
-
-        <button class = "subbutton" > Analyze Numbers </button>
-        <button class = "subbutton" > Analyze Bias Words </button>
-        <button class = "subbutton" > Analyze Adjectives </button>
-        <button class = "subbutton" > Analyze Quotes  </button>
-
-        <td>
-            <!-- <p> return </p> -->
-        </td>
-        <td>
-            <div type="input" class="result" name="res_text" id="res_text" value="" style="width:1000px;height:1000px;overflow-y:auto;border-style:solid; border-width:1px; border-color:#000" >{{res_text}} Results Loading...</div>
-        </td>
-    </table>
     <script>
     var textarea = document.getElementById('res_text');
-    // textarea.scrollTop = textarea.scrollHeight;
+
+    function number() {
+      var og = document.getElementById("res_text")
+      var num = document.getElementById("res_text_num");
+      var words = document.getElementById("res_text_words")
+      var adj = document.getElementById("res_text_adj")
+      var quotes = document.getElementById("res_text_quotes")
+
+      var quest_main = document.getElementById("questions_main")
+      var quest_num = document.getElementById("questions_num")
+      var quest_words = document.getElementById("questions_word")
+      var quest_adj = document.getElementById("questions_adj")
+      var quest_quotes = document.getElementById("questions_quotes")
+
+      og.style.display = "none"
+      num.style.display = "block"
+      words.style.display = "none"
+      adj.style.display = "none"
+      quotes.style.display = "none"
+
+      quest_main.style.display = "none"
+      quest_num.style.display = "block"
+      quest_words.style.display = "none"
+      quest_adj.style.display = "none"
+      quest_quotes.style.display = "none"
+
+    }
+    function words() {
+
+      var og = document.getElementById("res_text")
+      var num = document.getElementById("res_text_num");
+      var words = document.getElementById("res_text_words")
+      var adj = document.getElementById("res_text_adj")
+      var quotes = document.getElementById("res_text_quotes")
+      var quest_main = document.getElementById("questions_main")
+      var quest_num = document.getElementById("questions_num")
+      var quest_words = document.getElementById("questions_word")
+      var quest_adj = document.getElementById("questions_adj")
+      var quest_quotes = document.getElementById("questions_quotes")
+
+      og.style.display = "none"
+      num.style.display = "none"
+      words.style.display = "block"
+      adj.style.display = "none"
+      quotes.style.display = "none"
+
+      quest_main.style.display = "none"
+      quest_num.style.display = "none"
+      quest_words.style.display = "block"
+      quest_adj.style.display = "none"
+      quest_quotes.style.display = "none"
+    }
+    function adj() {
+
+      var og = document.getElementById("res_text")
+      var num = document.getElementById("res_text_num");
+      var words = document.getElementById("res_text_words")
+      var adj = document.getElementById("res_text_adj")
+      var quotes = document.getElementById("res_text_quotes")
+      var quest_main = document.getElementById("questions_main")
+      var quest_num = document.getElementById("questions_num")
+      var quest_words = document.getElementById("questions_word")
+      var quest_adj = document.getElementById("questions_adj")
+      var quest_quotes = document.getElementById("questions_quotes")
+
+      og.style.display = "none"
+      num.style.display = "none"
+      words.style.display = "none"
+      adj.style.display = "block"
+      quotes.style.display = "none"
+
+      quest_main.style.display = "none"
+      quest_num.style.display = "none"
+      quest_words.style.display = "none"
+      quest_adj.style.display = "block"
+      quest_quotes.style.display = "none"
+    }
+    function quotes() {
+      var og = document.getElementById("res_text")
+      var num = document.getElementById("res_text_num");
+      var words = document.getElementById("res_text_words")
+      var adj = document.getElementById("res_text_adj")
+      var quotes = document.getElementById("res_text_quotes")
+      var quest_main = document.getElementById("questions_main")
+      var quest_num = document.getElementById("questions_num")
+      var quest_words = document.getElementById("questions_word")
+      var quest_adj = document.getElementById("questions_adj")
+      var quest_quotes = document.getElementById("questions_quotes")
+
+      og.style.display = "none"
+      num.style.display = "none"
+      words.style.display = "none"
+      adj.style.display = "none"
+      quotes.style.display = "block"
+
+      quest_main.style.display = "none"
+      quest_num.style.display = "none"
+      quest_words.style.display = "none"
+      quest_adj.style.display = "none"
+      quest_quotes.style.display = "block"
+    }
+
     </script>
 </form>
 </body>

@@ -33,7 +33,6 @@ def number_extract(article):
     return found_reg_list,index_list
 def get_number(article):
     word_tokenize = tokenize(article)
-    print(word_tokenize)
     numbers_stack = []
     results = []
     for word in word_tokenize:
@@ -60,5 +59,3 @@ def highlight_number(html,article):
 s  = "2,000 3.7% $ 10.00,￥10.11, 7.777, 10%, 75.777 percent, 82.77% 82.77 per cent 1,000, \"100 billion\"."
 
 found_reg_list , index_list = number_extract(s)
-print(found_reg_list)
-print(get_number(s))

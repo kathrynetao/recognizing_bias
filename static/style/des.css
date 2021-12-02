@@ -1,6 +1,6 @@
 
 .webh1{
-  padding-top: 100px;
+  padding-top: 75px;
   padding-bottom: 10px;
   font-size: 30px;
   text-align: center;
@@ -20,7 +20,7 @@
   background-color: white;
   color:black;
   font-size: larger;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
 }
 
 .webh3{
@@ -32,141 +32,28 @@
 
 body{
   align-items: center;
-  /*background: linear-gradient(-45deg, #ee7752, red, #23a6d5, #23d5ab);*/
-  background: linear-gradient(-45deg, black, gray, #b3a9ad, white);
-
 }
-
-
 
 body {
-
-  margin:0;
-  padding:0;
   background-image: url(news.jpg);
-
 }
 
- td{
-  background-color: white;
-  padding-left: 30px;
+table.article{ margin-left: 3%;}
+  .td{
+      background-color: white;
+    }
 
-
-}
-
-
-/* CSS
-.button-56 {
-  align-items: center;
-  background-color: #fee6e3;
-  border: 2px solid #111;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: #111;
-  cursor: pointer;
-  display: flex;
-  font-family: Inter,sans-serif;
-  font-size: 16px;
-  height: 48px;
-  justify-content: center;
-  line-height: 24px;
-  max-width: 100%;
-  padding: 0 25px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-56:after {
-  background-color: #111;
-  border-radius: 8px;
-  content: "";
-  display: block;
-  height: 48px;
-  left: 0;
-  width: 100%;
-  position: absolute;
-  top: -2px;
-  transform: translate(8px, 8px);
-  transition: transform .2s ease-out;
-  z-index: -1;
-}
-
-.button-56:hover:after {
-  transform: translate(0, 0);
-}
-
-.button-56:active {
-  background-color: #ffdeda;
-  outline: 0;
-}
-
-.button-56:hover {
-  outline: 0;
-}
-
-@media (min-width: 768px) {
-  .button-56 {
-    padding: 0 40px;
+table.search{ }
+  .td{
+    background-color: white;
   }
-}
 
-BUTTON FROM THIS SITE https://codepen.io/ahart814/pen/yLNMZGa
-:root {
-  --backgroundColor: rgba(246, 241, 209);
-  --colorShadeA: rgb(106, 163, 137);
-  --colorShadeB: rgb(121, 186, 156);
-  --colorShadeC: rgb(150, 232, 195);
-  --colorShadeD: rgb(187, 232, 211);
-  --colorShadeE: rgb(205, 255, 232);
-}
 
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
-* {
-  box-sizing: border-box;
-}
-*::before, *::after {
-  box-sizing: border-box;
-}
-*/
 
-/* CSS */
-/* .button-1 {
-  background-color: #EA4C89;
-  border-radius: 8px;
-  border-style: none;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  cursor: pointer;
-  display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  height: 40px;
-  line-height: 20px;
-  list-style: none;
-  margin: 0;
-  outline: none;
-  padding: 10px 16px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transition: color 100ms;
-  vertical-align: baseline;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
- */
+.questions{
+  white-space:pre-wrap;
 
-/* .button-1:hover,
-.button-1:focus {
-  background-color: #F082AC;
 }
- */
 
 .subbutton {
   align-items: center;
@@ -184,8 +71,9 @@ BUTTON FROM THIS SITE https://codepen.io/ahart814/pen/yLNMZGa
   height: 40px;
   line-height: 20px;
   list-style: none;
-  margin-left: 32px;
-  margin-top: 30;
+  margin-left: 45px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   outline: none;
   position: relative;
   display: inline-block;
@@ -234,63 +122,8 @@ BUTTON FROM THIS SITE https://codepen.io/ahart814/pen/yLNMZGa
   font-family: inherit;
 }
 
-/*
-button.big-button {
-  padding: 1em 2em;
-  border: 2px solid var(--colorShadeA);
-  border-radius: 1em;
-  background: var(--colorShadeE);
-  transform-style: preserve-3d;
-  transition: all 175ms cubic-bezier(0, 0, 1, 1);
-   margin: auto;
-}
-button.big-button::before {
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--colorShadeC);
-  border-radius: inherit;
-  box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.75em 0 0 var(--colorShadeA);
-  transform: translate3d(0, 0.75em, -1em);
-  transition: all 175ms cubic-bezier(0, 0, 1, 1);
-}
-
-
-button.big-button:hover {
-  background: var(--colorShadeD);
-  transform: translate(0, 0.375em);
-}
-
-button.big-button:hover::before {
-  transform: translate3d(0, 0.75em, -1em);
-}
-
-button.big-button:active {
-            transform: translate(0em, 0.75em);
-}
-
-button.big-button:active::before {
-  transform: translate3d(0, 0, -1em);
-
-      box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
-
-}
-
-#navbar{
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-
-}
- */
-
 .main {
-  margin-left: 140px; /* Same width as the sidebar + left position in px */
-  font-size: 28px; /* Increased text to enable scrolling */
+  margin-left: 140px;
+  font-size: 28px;
   padding: 0px 10px;
 }

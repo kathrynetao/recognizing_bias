@@ -41,6 +41,3 @@ def adjective_detector(txt):
     final["comps"] = comps
     final["sups"] = sups
     return final
-
-print(adjective_detector(txt1))
-print(adjective_detector(txt2))
